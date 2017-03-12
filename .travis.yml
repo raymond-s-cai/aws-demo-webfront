@@ -19,3 +19,11 @@ before_script:
 script:
   - npm run test-single-run
   - (npm start > /dev/null &) && (npm run protractor)
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  region: $AWS_REGION
+  bucket: $BUCKET_NAME
+  skip_cleanup: true
+  local_dir: app
